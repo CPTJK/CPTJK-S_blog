@@ -75,3 +75,42 @@ function defineReactive (data, key, val) {
   })
 }
 ```
+
+在`defineReactive`中新增了数组`dep`,用来存储被收集的依赖.然后在触发`set`时,循环`dep`把收集到的依赖触发.但是上面的写法有点耦合,我们把依赖收集这部分代码封装起来,写成下面的样子:
+
+```JavaScript
+export default class Dep {
+  static target: ?Watcher;
+  id: number;
+  subs: Array<Watcher>;
+
+  constructor () {
+    this.id = uid++
+    this.subs = []
+  }
+
+  addSub (sub: Watcher) {
+    this.subs.push(sub)
+  }
+
+  removeSub (sub: Watcher) {
+    remove(this.subs, sub)
+  }
+
+  depend () {
+    if (Dep.target) {
+      this.addSub(Dep.target)
+    }
+  }
+
+  notify () {
+    // stabilize the subscriber list first
+    const subs = this.subs.slice()
+    for (let i = 0, l = subs.length; i < l; i++) {
+      subs[i].update()
+    }
+  }
+}
+```
+
+
