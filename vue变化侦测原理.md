@@ -78,7 +78,7 @@ function defineReactive (data, key, val) {
 
 在`defineReactive`中新增了数组`dep`,用来存储被收集的依赖.然后在触发`set`时,循环`dep`把收集到的依赖触发.但是上面的写法有点耦合,我们把依赖收集这部分代码封装起来,写成下面的样子:
 
-```JavaScript
+```typescript
 export default class Dep {
   static target: ?Watcher;
   id: number;
