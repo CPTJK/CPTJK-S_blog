@@ -58,4 +58,29 @@ JavaScript 的 `Document.cookie`API 无法访问带有 `HTTPOnly`属性的`cooki
 
 ### cookie的作用域
 
-### Path
+`domain`和`path`标识定义了`cookie`的作用域: 即允许该`cookie`请求哪些URL的时候可以带上
+
+#### domain
+
+`domain`指定了哪些主机可以接受`cookie`, 如果不指定,默认值为`origin`,**不包含子域名**.如果指定了`domain`,**反而会包含子域名**.因此,指定`domain`相较于省略它,反而使得`cookie`的使用范围扩大了. 通常是子域名需要能够共享有关用户信息时候,会指定`domain`属性
+>origin: web content's `origin` is defined by the *scheme(protocol),host(domain) and port* of URL used to access it. Two objects have the same origin only when the scheme , host and port all match.
+
+如果设置`domain=Mozilla.com`,则cookie也可以被子域`developer.Mozilla.com`使用.
+
+#### Path
+
+`path`标识指定了主机下的哪些路径可以接受该`cookie`. 以'/'作为路径分隔符,**子路径也会被匹配**, 默认值为'/'
+
+例如: 设置`path=/docs`,则下面的地址都会被匹配:
+
+* /docs
+* /docs/web
+* docs/web/http
+
+#### sameSite
+
+The `sameSite` attribute lets servers specify whether/when cookies are sent with cross-origin requests(where site is defined by the registrable domain),
+
+## 安全
+
+## 跟踪和隐私
