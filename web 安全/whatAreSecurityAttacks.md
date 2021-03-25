@@ -6,7 +6,11 @@ An insecure application could expose users and systems to various types of damag
 
 ## Active attacks vs passive attacks
 
+<<<<<<< HEAD
 Attacks can be devided into two different types: active and passive.
+=======
+Attacks can be devided into two different types: active and passive. The
+>>>>>>> 169cc3d... web 安全 v1.0
 
 ### Active attacks
 
