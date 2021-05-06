@@ -21,10 +21,11 @@ git 中的分支非常轻量,本质上是一个指针,简单的指向某个提�
 
 ## HEAD
 
-HEAD也是一个指针,指向的是当前工作的分支,上图中的`*`就代表`HEAD指针`,`git check <branchName>`实际上就是让HEAD指针指向相应的分支
+HEAD也是一个指针,HEAD 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。上图中的`*`就代表`HEAD指针`
 
-1. rebase 提取了相应的commit补丁和修改,应用在了另外一个commit的基础上
-2. fast-forward:是一种现象
+`HEAD`通常情况下是指向分支名的
+
+`git check <branchName|commit>`实际上就是让HEAD指针指向相应的`分支`或者`commit`
 
 ## merge
 
@@ -69,3 +70,14 @@ HEAD也是一个指针,指向的是当前工作的分支,上图中的`*`就代�
 ![image](/git/static/fastForward2.png)
 
 注意,这时候同样产生了`fast-forward`现象
+
+## reset vs checkout vs revert
+
+???
+
+## cherry-pick
+
+`git cherry-pick <提交号>...`
+
+
+
